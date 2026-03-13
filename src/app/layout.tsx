@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   description:
     "Revkins is an AI and automation agency that helps service-based businesses eliminate manual work — from the first customer touchpoint all the way through delivery, reporting, and growth.",
   keywords: "AI automation, business automation, workflow automation, AI agency",
+  // This explicitly points to the icon you just added
+  icons: {
+    icon: "/icon.png",
+  },
   openGraph: {
     title: "Revkins — Smart Automation for Business Growth",
     description:

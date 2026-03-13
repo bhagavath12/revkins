@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+}
+
+.blue-gradient-text {
+  background: linear-gradient(135deg, #3b30cc, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(135deg, #3b30cc, #0ea5e9);
+  border-radius: 999px;
+  animation: underline-grow 1.5s ease forwards;
+}
+
+@keyframes underline-grow {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Blob animations */
+.blob-1 {
+  animation: blob-move-1 35s ease-in-out infinite;
+}
+
+.blob-2 {
+  animation: blob-move-2 40s ease-in-out infinite;
+}
+
+.blob-3 {
+  animation: blob-move-3 45s ease-in-out infinite;
+}
+
+@keyframes blob-move-1 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  25%  { transform: translate(60px, -40px) scale(1.05); }
+  50%  { transform: translate(-40px, 60px) scale(0.95); }
+  75%  { transform: translate(40px, 40px) scale(1.05); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes blob-move-2 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  25%  { transform: translate(-60px, 40px) scale(0.95); }
+  50%  { transform: translate(50px, -50px) scale(1.05); }
+  75%  { transform: translate(-40px, -30px) scale(0.98); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes blob-move-3 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(40px, 50px) scale(1.08); }
+  66%  { transform: translate(-50px, -40px) scale(0.94); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 2px #0ea5e9, 0 20px 40px rgba(59, 48, 204, 0.1);
+}
+
+.card-hover:hover .card-icon {
+  background-color: #3b30cc;
+  color: #ffffff;
+}

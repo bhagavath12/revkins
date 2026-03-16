@@ -5,6 +5,7 @@ import Problem from "@/components/Problem"
 import Services from "@/components/Services"
 import HowWeWork from "@/components/HowWeWork"
 import WhoItsFor from "@/components/WhoItsFor"
+import Pricing from "@/components/Pricing"
 import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <HowWeWork />
       <WhoItsFor />
+      <Pricing />
       <Contact />
       <Footer />
     </main>

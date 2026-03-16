@@ -19,11 +19,21 @@ const config: Config = {
       },
       animation: {
         marquee: 'marquee 30s linear infinite',
+        fadeUp: 'fadeUp 0.5s ease forwards',
+        fadeUpPop: 'fadeUpPop 0.5s ease forwards',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeUpPop: {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(-12px)' },
         },
       },
     },

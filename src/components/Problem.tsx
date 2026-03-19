@@ -82,7 +82,7 @@ export default function Problem() {
         </div>
 
         <ScrollReveal width="100%" delay={0.2}>
-          <div className="mt-20 p-10 bg-[#0F172A] rounded-3xl text-center text-white relative overflow-hidden shadow-2xl">
+          <div className="mt-20 p-10 bg-[#0A1B3F] rounded-3xl text-center text-white relative overflow-hidden shadow-2xl">
             <div
               className="absolute inset-0 opacity-5 pointer-events-none"
               style={{

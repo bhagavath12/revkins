@@ -85,7 +85,7 @@ export default function HowWeWork() {
         </div>
 
         <ScrollReveal width="100%" delay={0.2}>
-          <div className="mt-20 flex flex-col md:flex-row items-center justify-between p-8 rounded-3xl bg-[#0F172A] text-white overflow-hidden relative">
+          <div className="mt-20 flex flex-col md:flex-row items-center justify-between p-8 rounded-3xl bg-[#0A1B3F] text-white overflow-hidden relative">
             <div className="relative z-10">
               <p
                 style={{ fontFamily: "Inter, sans-serif", fontWeight: 600 }}

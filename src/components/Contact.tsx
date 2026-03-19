@@ -126,7 +126,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
 
               {/* Left */}
-              <div className="bg-[#0F172A] p-12 flex flex-col justify-center relative overflow-hidden">
+              <div className="bg-[#0A1B3F] p-12 flex flex-col justify-center relative overflow-hidden">
                 <div
                   className="absolute inset-0 opacity-5 pointer-events-none"
                   style={{
@@ -228,7 +228,7 @@ export default function Contact() {
                     </p>
                     <a
                       href={`mailto:${FALLBACK_EMAIL}`}
-                      className="inline-flex items-center gap-2 bg-[#0F172A] hover:bg-slate-800 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 mt-2"
+                      className="inline-flex items-center gap-2 bg-[#0A1B3F] hover:bg-[#07132e] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 mt-2"
                     >
                       <Mail size={15} />
                       {FALLBACK_EMAIL}

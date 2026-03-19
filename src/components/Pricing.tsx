@@ -64,21 +64,21 @@ const Pricing = () => {
         </div>
 
         {/* PREMIUM */}
-        <div className="bg-white rounded-[20px] border-2 border-slate-900 overflow-visible relative transition-all duration-300 hover:-translate-y-4 hover:shadow-2xl hover:shadow-slate-900/10 opacity-0 animate-[fadeUpPop_0.5s_ease_forwards] shadow-xl shadow-slate-900/10 z-10 md:-mt-4 [animation-delay:200ms]">
+        <div className="bg-white rounded-[20px] border-2 border-blue-950 overflow-visible relative transition-all duration-300 hover:-translate-y-4 hover:shadow-2xl hover:shadow-blue-950/10 opacity-0 animate-[fadeUpPop_0.5s_ease_forwards] shadow-xl shadow-blue-950/10 z-10 md:-mt-4 [animation-delay:200ms]">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white font-syne text-[10px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full whitespace-nowrap shadow-md">
             Most Popular
           </div>
-          <div className="bg-slate-900 pt-8 pb-5 px-6 rounded-t-[18px]">
+          <div className="bg-blue-950 pt-8 pb-5 px-6 rounded-t-[18px]">
             <div className="font-syne font-extrabold text-2xl text-white tracking-tight mb-1">Premium</div>
             <div className="text-white/70 text-sm leading-relaxed">Full automation stack for growing businesses.</div>
           </div>
           <div className="mx-5 -translate-y-1 bg-slate-50 rounded-xl px-5 py-4 text-center border border-slate-200">
             <div className="text-xs text-slate-500 uppercase tracking-wider mb-1 font-medium">Starting from</div>
-            <div className="font-syne font-extrabold text-3xl text-slate-900 tracking-tight leading-none mb-1">Rs. 60,000</div>
+            <div className="font-syne font-extrabold text-3xl text-blue-950 tracking-tight leading-none mb-1">Rs. 60,000</div>
             <div className="text-xs text-slate-500 font-medium">one-time setup</div>
           </div>
           <div className="p-6 pt-5">
-            <div className="text-[10px] font-bold tracking-widest uppercase text-slate-900 mb-3">What's included</div>
+            <div className="text-[10px] font-bold tracking-widest uppercase text-blue-950 mb-3">What's included</div>
             <div className="h-px bg-slate-100 mb-4"></div>
             <ul className="space-y-3 mb-6">
               {[
@@ -92,7 +92,7 @@ const Pricing = () => {
                 "60-day post-launch support",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5 text-sm text-slate-700 leading-snug font-medium">
-                  <span className="shrink-0 w-[18px] h-[18px] rounded-full bg-slate-900 flex items-center justify-center text-[10px] text-white mt-[1px]">✓</span>
+                  <span className="shrink-0 w-[18px] h-[18px] rounded-full bg-blue-950 flex items-center justify-center text-[10px] text-white mt-[1px]">✓</span>
                   {item}
                 </li>
               ))}
@@ -105,7 +105,7 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <a href="#contact" className="block w-full py-3.5 bg-slate-900 text-white text-sm font-bold tracking-wide text-center rounded-xl transition-all duration-200 hover:opacity-90 active:scale-95">
+            <a href="#contact" className="block w-full py-3.5 bg-blue-950 text-white text-sm font-bold tracking-wide text-center rounded-xl transition-all duration-200 hover:opacity-90 active:scale-95">
               Most Popular — Start Here
             </a>
           </div>

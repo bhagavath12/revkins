@@ -11,6 +11,19 @@ interface Message {
 
 const WEBHOOK_URL = "/api/chat";
 
+const formatMessage = (text: string) => {
+  if (!text) return { __html: "" };
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+  const withBold = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  return { __html: withBold };
+};
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -56,14 +69,10 @@ export default function Chatbot() {
     localStorage.setItem("chatHistory", JSON.stringify(newMessages));
   };
 
-  const handleSend = async (e?: React.FormEvent) => {
-    e?.preventDefault();
-    if (!input.trim() || !sessionId || loading) return;
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || !sessionId || loading) return;
 
-    const userMessage = input.trim();
-    setInput("");
-    
-    const newMessages: Message[] = [...messages, { role: "user", content: userMessage }];
+    const newMessages: Message[] = [...messages, { role: "user", content: text }];
     saveHistory(newMessages);
     setLoading(true);
 
@@ -71,7 +80,7 @@ export default function Chatbot() {
       const response = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId, message: userMessage })
+        body: JSON.stringify({ sessionId, message: text })
       });
 
       let botResponse = "Sorry, I could not process your request.";
@@ -105,6 +114,15 @@ export default function Chatbot() {
       saveHistory([...newMessages, { role: "bot", content: "Network error. Please try again later." }]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSend = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (input.trim()) {
+      const text = input.trim();
+      setInput("");
+      await sendMessage(text);
     }
   };
 
@@ -152,14 +170,13 @@ export default function Chatbot() {
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                    className={`whitespace-pre-wrap max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                       msg.role === "user"
                         ? "bg-blue-600 text-white rounded-br-sm"
                         : "bg-slate-800 text-slate-200 rounded-bl-sm border border-slate-700"
                     }`}
-                  >
-                    {msg.content}
-                  </div>
+                    dangerouslySetInnerHTML={formatMessage(msg.content)}
+                  />
                 </motion.div>
               ))}
               {loading && (
@@ -174,8 +191,23 @@ export default function Chatbot() {
               <div ref={messagesEndRef} />
             </div>
 
+            {/* Quick Replies */}
+            <div className="px-4 py-3 bg-slate-950 flex flex-wrap gap-2 border-t border-slate-800 overflow-x-auto no-scrollbar">
+              {["Pricing", "Onboarding", "Service Catalog"].map((option) => (
+                <button
+                  key={option}
+                  onClick={() => sendMessage(option)}
+                  disabled={loading}
+                  className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs rounded-full border border-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  title={`Ask about ${option}`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+
             {/* Input Area */}
-            <div className="p-4 bg-slate-950 border-t border-slate-800">
+            <div className="p-4 pt-1 bg-slate-950">
               <form
                 onSubmit={handleSend}
                 className="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 focus-within:border-blue-500 transition-colors"

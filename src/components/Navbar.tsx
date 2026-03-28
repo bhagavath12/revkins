@@ -9,6 +9,7 @@ const navLinks = [
   { label: "How We Work", href: "#how-it-works" },
   { label: "Who It's For", href: "#who-its-for" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Blog", href: "/blogs" },
 ];
 
 export default function Navbar() {

@@ -16,10 +16,17 @@ const components = {
     }
   },
   marks: {
-    textLarge: ({ children }: any) => <span className="text-2xl font-medium leading-snug">{children}</span>,
-    textHuge: ({ children }: any) => <span className="text-4xl md:text-5xl font-bold leading-tight">{children}</span>,
-    fontSerif: ({ children }: any) => <span className="font-serif italic">{children}</span>,
-    fontMono: ({ children }: any) => <span className="font-mono bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded text-sm text-[#3B30CC]">{children}</span>,
+    customTextStyle: ({ children, value }: any) => {
+      const style: any = {}
+      if (value?.fontSize) style.fontSize = `${value.fontSize}px`
+      if (value?.fontFamily) style.fontFamily = value.fontFamily
+      
+      return (
+        <span style={style} className={!value?.fontFamily ? 'font-inherit' : ''}>
+          {children}
+        </span>
+      )
+    }
   }
 }
 

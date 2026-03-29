@@ -51,11 +51,37 @@ export const post = defineType({
               { title: 'Code', value: 'code' },
               { title: 'Underline', value: 'underline' },
               { title: 'Strike', value: 'strike-through' },
-              { title: 'Text: Large', value: 'textLarge' },
-              { title: 'Text: Huge', value: 'textHuge' },
-              { title: 'Font: Serif', value: 'fontSerif' },
-              { title: 'Font: Mono', value: 'fontMono' },
-            ]
+            ],
+            annotations: [
+              {
+                name: 'customTextStyle',
+                title: 'Text Style',
+                type: 'object',
+                fields: [
+                  {
+                    name: 'fontSize',
+                    title: 'Font Size (px)',
+                    type: 'number',
+                    description: 'Use the arrows or enter a number like 16, 24, 32',
+                  },
+                  {
+                    name: 'fontFamily',
+                    title: 'Font Family',
+                    type: 'string',
+                    options: {
+                      list: [
+                        { title: 'Default (Sans)', value: 'sans-serif' },
+                        { title: 'Serif (Classic)', value: 'serif' },
+                        { title: 'Monospace (Code)', value: 'monospace' },
+                        { title: 'Inter', value: 'Inter, sans-serif' },
+                        { title: 'Lora', value: 'Lora, serif' },
+                        { title: 'Roboto', value: 'Roboto, sans-serif' },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
           }
         },
         { type: 'image', options: { hotspot: true } },

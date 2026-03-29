@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity'
+import React from 'react'
 
 export const post = defineType({
   name: 'post',
@@ -57,6 +58,18 @@ export const post = defineType({
                 name: 'customTextStyle',
                 title: 'Text Style',
                 type: 'object',
+                components: {
+                  annotation: (props: any) => React.createElement(
+                    'span',
+                    {
+                      style: {
+                        fontSize: props.value?.fontSize ? `${props.value.fontSize}px` : undefined,
+                        fontFamily: props.value?.fontFamily || undefined,
+                      }
+                    },
+                    props.renderDefault(props)
+                  )
+                },
                 fields: [
                   {
                     name: 'fontSize',

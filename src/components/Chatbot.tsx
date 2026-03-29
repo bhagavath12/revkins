@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 interface Message {
   role: "user" | "bot";
@@ -25,6 +26,7 @@ const formatMessage = (text: string) => {
 };
 
 export default function Chatbot() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -125,6 +127,10 @@ export default function Chatbot() {
       await sendMessage(text);
     }
   };
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <>

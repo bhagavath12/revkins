@@ -3,13 +3,27 @@ import { urlForImage } from '../../../sanity/lib/image'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
+import { PortableText } from '@portabletext/react'
+
+const components = {
+  types: {
+    image: ({ value }: any) => {
+      return (
+        <div className="my-8 relative h-[400px] w-full rounded-xl overflow-hidden bg-slate-100">
+          <Image src={urlForImage(value)} alt="" fill className="object-contain" />
+        </div>
+      )
+    }
+  }
+}
 
 export const revalidate = 3600 
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
   const post = await client.fetch(
     `*[_type == "post" && slug.current == $slug][0] { seo, title }`,
-    { slug: params.slug }
+    { slug: resolvedParams.slug }
   )
 
   return {
@@ -18,7 +32,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
   const post = await client.fetch(
     `*[_type == "post" && slug.current == $slug][0] {
       title,
@@ -27,7 +42,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       seo,
       "authorName": author->name
     }`,
-    { slug: params.slug }
+    { slug: resolvedParams.slug }
   )
 
   if (!post) {
@@ -59,19 +74,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         </div>
         
         <div className="prose prose-lg prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-[#3B30CC] hover:prose-a:text-[#2f26a8] prose-img:rounded-xl">
-          {post.body?.map((block: any, i: number) => {
-            if (block._type === 'block') {
-              return <p key={i} className="mb-6 text-slate-700 leading-relaxed text-lg">{block.children?.map((c: any) => c.text).join('')}</p>
-            }
-            if (block._type === 'image') {
-              return (
-                <div key={i} className="my-8 relative h-[400px] w-full rounded-xl overflow-hidden bg-slate-100">
-                  <Image src={urlForImage(block)} alt="" fill className="object-contain" />
-                </div>
-              )
-            }
-            return null
-          })}
+          {post.body ? <PortableText value={post.body} components={components} /> : null}
         </div>
       </article>
     </main>

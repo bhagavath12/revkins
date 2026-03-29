@@ -42,7 +42,22 @@ export const post = defineType({
       title: 'Body',
       type: 'array',
       of: [
-        { type: 'block' },
+        { 
+          type: 'block',
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+              { title: 'Code', value: 'code' },
+              { title: 'Underline', value: 'underline' },
+              { title: 'Strike', value: 'strike-through' },
+              { title: 'Text: Large', value: 'textLarge' },
+              { title: 'Text: Huge', value: 'textHuge' },
+              { title: 'Font: Serif', value: 'fontSerif' },
+              { title: 'Font: Mono', value: 'fontMono' },
+            ]
+          }
+        },
         { type: 'image', options: { hotspot: true } },
       ],
     }),

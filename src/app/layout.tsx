@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     url: "https://revkins.com",
     images: [
       {
-        url: "/logo.png",
+        url: "/og-logo.png",
         width: 1200,
-        height: 630,
+        height: 1200,
         alt: "Revkins Logo",
       },
     ],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Revkins — Smart Automation for Business Growth",
     description:
       "Eliminate manual work and scale your business with AI-powered automation.",
-    images: ["/logo.png"],
+    images: ["/og-logo.png"],
   },
 };
 

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -114,6 +115,66 @@ export default function Hero() {
             <Play size={14} className="fill-current" />
             See What We Build
           </a>
+        </motion.div>
+
+        {/* Founders Avatar Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-16 sm:mt-24 pt-8 border-t border-slate-200/60 flex flex-col items-center justify-center gap-6"
+        >
+          <p className="text-sm font-medium text-slate-400 uppercase tracking-widest">
+            Meet the Founders
+          </p>
+          <div className="flex flex-row items-center justify-center gap-8 sm:gap-16">
+
+            {/* Pranadir */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full border border-slate-200 p-1 bg-white shadow-2xl shadow-slate-200/60 shrink-0 group hover:border-[#3B30CC] transition-colors duration-300">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-100 flex items-center justify-center">
+                  <p className="text-xs text-slate-400 text-center uppercase tracking-wider absolute z-0 leading-tight">Image<br />Pranadir</p>
+                  <Image
+                    src="/images/founders/pranadir.jpg"
+                    alt="Pranadir"
+                    fill
+                    sizes="(max-width: 768px) 128px, 160px"
+                    className="object-cover z-10 group-hover:scale-110 transition-transform duration-500 will-change-transform"
+                  />
+                </div>
+              </div>
+              <div className="text-center">
+                <span className="block text-lg sm:text-xl font-semibold text-slate-900 tracking-tight mb-1">Pranadir</span>
+                <span className="block text-sm text-slate-500 font-medium uppercase tracking-wider">Founder</span>
+              </div>
+            </div>
+
+            {/* Abhay */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full border border-slate-200 p-1 bg-white shadow-2xl shadow-slate-200/60 shrink-0 group hover:border-[#3B30CC] transition-colors duration-300">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-slate-100 flex items-center justify-center">
+                  <p className="text-xs text-slate-400 text-center uppercase tracking-wider absolute z-0 leading-tight">Image<br />Abhay</p>
+                  
+                  {/* Wrapping div zooms in very slightly (10%) to allow horizontal panning without making him look too large */}
+                  <div className="absolute w-[110%] h-[110%] -left-[8%] top-[1%] z-10 group-hover:scale-110 transition-transform duration-500 will-change-transform">
+                    <Image
+                      src="/images/founders/abhay.jpg"
+                      alt="Abhay"
+                      fill
+                      sizes="(max-width: 768px) 160px, 200px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+
+                </div>
+              </div>
+              <div className="text-center">
+                <span className="block text-lg sm:text-xl font-semibold text-slate-900 tracking-tight mb-1">Abhay</span>
+                <span className="block text-sm text-slate-500 font-medium uppercase tracking-wider">Founder</span>
+              </div>
+            </div>
+
+          </div>
         </motion.div>
       </div>
     </section>

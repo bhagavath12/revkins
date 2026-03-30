@@ -5,6 +5,7 @@ import Chatbot from "@/components/Chatbot";
 import Script from "next/script";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://revkins.com"),
   title: "Revkins — Smart Automation for Business Growth",
   description:
     "Revkins is an AI and automation agency that helps service-based businesses eliminate manual work — from the first customer touchpoint all the way through delivery, reporting, and growth.",
@@ -18,6 +19,22 @@ export const metadata: Metadata = {
     description:
       "Eliminate manual work and scale your business with AI-powered automation.",
     type: "website",
+    url: "https://revkins.com",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Revkins Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Revkins — Smart Automation for Business Growth",
+    description:
+      "Eliminate manual work and scale your business with AI-powered automation.",
+    images: ["/logo.png"],
   },
 };
 
